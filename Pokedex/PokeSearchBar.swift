@@ -22,7 +22,7 @@ class PokeSearchBar: UISearchBar {
     
     required init?(coder aDecoder: NSCoder){
         super.init(coder: aDecoder)
-        layer.borderColor = ((UIColor(red: 255/255, green: 102/255, blue: 102/255, alpha: 1.0)).cgColor);
+        layer.borderColor = ((UIColor(red: 255/255, green: 214/255, blue: 0/255, alpha: 1.0)).cgColor);
         layer.borderWidth = 1
     }
     
@@ -48,18 +48,18 @@ class PokeSearchBar: UISearchBar {
             
             // Set the font and text color of the search field.
             searchField.font = preferredFont
-            searchField.textColor = UIColor.white
-            
+            searchField.textColor = UIColor.gray
+
             // Set the background color of the search field.
             searchField.backgroundColor = barTintColor
             
             //Set searchbar placeholder color
-            searchField.attributedPlaceholder = NSAttributedString(string:"Search Pokemon", attributes: [NSForegroundColorAttributeName: UIColor.white])
+            searchField.attributedPlaceholder = NSAttributedString(string:"Search Pokemon", attributes: [NSForegroundColorAttributeName: UIColor.gray])
             
             //search search icon color change
             let glassIconView =  searchField.leftView as! UIImageView
             glassIconView.image = glassIconView.image?.withRenderingMode(.alwaysTemplate)
-            glassIconView.tintColor = UIColor.white
+            glassIconView.tintColor = UIColor.gray
             
             
             //Set clearbutton image to white

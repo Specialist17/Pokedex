@@ -32,8 +32,13 @@ class PokemonVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
         parsePokemonCSV()
         initAudio()
         
+        for tickMark in stride(from: 0, to: 70, by: 5) {
+            print(tickMark)
+        }
+        
     }
     
+    //Audio
     func initAudio(){
         let path = Bundle.main.path(forResource: "music", ofType: "mp3")
         
@@ -47,6 +52,7 @@ class PokemonVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
         }
     }
     
+    //Parse CSV
     func parsePokemonCSV() {
         let path = Bundle.main.path(forResource: "pokemon", ofType: "csv")!
         
@@ -90,7 +96,15 @@ class PokemonVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        var poke: Pokemon!
         
+        if inSearchMode {
+            poke = filteredPokemon[indexPath.row]
+        } else {
+            poke = pokemonArr[indexPath.row]
+        }
+        
+        performSegue(withIdentifier: "PokeDetailVC", sender: poke)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -150,10 +164,18 @@ class PokemonVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
     }
     
     @IBAction func sliderMoved(_ sender: UISlider) {
-        
         let volumeVal = Float(sender.value)
         musicPlayer.volume = volumeVal
-        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "PokeDetailVC" {
+            if let detailsVC = segue.destination as? PokemonDetailVC {
+                if let poke = sender as? Pokemon {
+                    detailsVC.pokemon = poke
+                }
+            }
+        }
     }
     
     
