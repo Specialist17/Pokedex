@@ -52,6 +52,19 @@ class PokemonDetailVC: UIViewController {
         weightLbl.text = pokemon.weight
         typeLbl.text = pokemon.type
         pokedexIdLbl.text = "\(pokemon.pokedexId)"
+        descriptionLbl.text = pokemon.description
+        
+        if pokemon.nextEvoId == "" {
+            evoLbl.text = "No Evolutions"
+            nextEvoImg.isHidden = true
+        } else {
+            nextEvoImg.isHidden = false
+            nextEvoImg.image = UIImage(named: "\(pokemon.nextEvoId)")
+            
+            let nextStr = "Next Evolution: \(pokemon.nextEvoName) - LVL \(pokemon.nextEvoLvl)"
+            evoLbl.text = nextStr
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {
