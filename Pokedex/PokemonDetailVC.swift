@@ -25,13 +25,33 @@ class PokemonDetailVC: UIViewController {
     @IBOutlet weak var nextEvoImg: UIImageView!
     @IBOutlet weak var evoLbl: UILabel!
     
+    let loading = UIActivityIndicatorView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         nameLbl.text = pokemon.name
-        pokemon.donwloadPokemonDetails { 
+        
+        let img = UIImage(named: "\(pokemon.pokedexId)")
+        mainImg.image = img
+        currentEvoImg.image = img
+        nextEvoImg.image = UIImage(named: "\(pokemon.pokedexId + 1)")
+        
+        pokemon.donwloadPokemonDetails {
             // Called after the network call is complete
+            
+            self.updateUi()
+            self.loading.stopAnimating()
         }
+    }
+    
+    
+    func updateUi() {
+        baseAttackLbl.text = pokemon.attack
+        defenseLbl.text = pokemon.defense
+        heightLbl.text = pokemon.height
+        weightLbl.text = pokemon.weight
+        typeLbl.text = pokemon.type
+        pokedexIdLbl.text = "\(pokemon.pokedexId)"
     }
 
     override func didReceiveMemoryWarning() {

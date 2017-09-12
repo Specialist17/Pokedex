@@ -31,11 +31,6 @@ class PokemonVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
         
         parsePokemonCSV()
         initAudio()
-        
-        for tickMark in stride(from: 0, to: 70, by: 5) {
-            print(tickMark)
-        }
-        
     }
     
     //Audio
