@@ -29,41 +29,45 @@ class PokemonDetailVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        nameLbl.text = pokemon.name
-        
-        let img = UIImage(named: "\(pokemon.pokedexId)")
-        mainImg.image = img
-        currentEvoImg.image = img
-        nextEvoImg.image = UIImage(named: "\(pokemon.pokedexId + 1)")
-        
-        pokemon.donwloadPokemonDetails {
-            // Called after the network call is complete
-            
-            self.updateUi()
-            self.loading.stopAnimating()
-        }
+//        nameLbl.text = pokemon.name
+//
+//        let img = UIImage(named: "\(pokemon.pokedexId)")
+//        mainImg.image = img
+//        currentEvoImg.image = img
+//        nextEvoImg.image = UIImage(named: "\(pokemon.pokedexId + 1)")
+//
+//        pokemon.donwloadPokemonDetails {
+//            // Called after the network call is complete
+//
+//            self.updateUi()
+//            self.loading.stopAnimating()
+//        }
+//
+//        pokemon.todoByID(2) { (poke, error) in
+//            print(poke?.name ?? "no hay na")
+//        }
     }
     
     
     func updateUi() {
-        baseAttackLbl.text = pokemon.attack
-        defenseLbl.text = pokemon.defense
-        heightLbl.text = pokemon.height
-        weightLbl.text = pokemon.weight
-        typeLbl.text = pokemon.type
-        pokedexIdLbl.text = "\(pokemon.pokedexId)"
-        descriptionLbl.text = pokemon.description
-        
-        if pokemon.nextEvoId == "" {
-            evoLbl.text = "No Evolutions"
-            nextEvoImg.isHidden = true
-        } else {
-            nextEvoImg.isHidden = false
-            nextEvoImg.image = UIImage(named: "\(pokemon.nextEvoId)")
-            
-            let nextStr = "Next Evolution: \(pokemon.nextEvoName) - LVL \(pokemon.nextEvoLvl)"
-            evoLbl.text = nextStr
-        }
+//        baseAttackLbl.text = pokemon.attack
+//        defenseLbl.text = pokemon.defense
+//        heightLbl.text = pokemon.height
+//        weightLbl.text = pokemon.weight
+//        typeLbl.text = pokemon.type
+//        pokedexIdLbl.text = "\(pokemon.pokedexId)"
+//        descriptionLbl.text = pokemon.description
+//
+//        if pokemon.nextEvoId == "" {
+//            evoLbl.text = "No Evolutions"
+//            nextEvoImg.isHidden = true
+//        } else {
+//            nextEvoImg.isHidden = false
+//            nextEvoImg.image = UIImage(named: "\(pokemon.nextEvoId)")
+//
+//            let nextStr = "Next Evolution: \(pokemon.nextEvoName) - LVL \(pokemon.nextEvoLvl)"
+//            evoLbl.text = nextStr
+//        }
         
     }
 

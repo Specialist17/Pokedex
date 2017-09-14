@@ -9,7 +9,7 @@
 import UIKit
 import Alamofire
 
-class Pokemon: Codable {
+class Pokemon: Decodable {
     private var _name: String!
     private var _pokedexId: Int!
     private var _description: String!
@@ -200,11 +200,46 @@ class Pokemon: Codable {
                     
                 }
             }
-            
-            
             completed()
         }
+    }
+    
+    
+    func todoByID(_ id: Int, completionHandler: @escaping (Pokemon?, Error?) -> Void) {
         
+        let url = URL(string: "\(URL_BASE)\(URL_POKEMON)\(1)")!
         
+        // Make request
+        let session = URLSession.shared
+        let task = session.dataTask(with: url, completionHandler: {
+            (data, response, error) in
+            // handle response to request
+            // check for error
+            guard error == nil else {
+                completionHandler(nil, error!)
+                return
+            }
+            // make sure we got data in the response
+            guard let responseData = data else {
+                print("Error: did not receive data")
+                
+                completionHandler(nil, error)
+                return
+            }
+            
+            // parse the result as JSON
+            // then create a Todo from the JSON
+            let decoder = JSONDecoder()
+            do {
+                let pokemon = try decoder.decode(Pokemon.self, from: responseData)
+                completionHandler(pokemon, nil)
+            } catch {
+                print("error trying to convert data to JSON")
+                print(error)
+                completionHandler(nil, error)
+            }
+        })
+        task.resume()
     }
 }
+
