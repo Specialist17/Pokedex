@@ -8,6 +8,8 @@
 
 import Foundation
 
+
+
 struct PokeStruct {
     
     let name: String!
@@ -22,6 +24,54 @@ struct PokeStruct {
     }
     
 }
+
+struct Results {
+    
+    let name: String!
+    let pokeResource: URL!
+    
+    
+    init(name: String, pokemonResource: URL) {
+        self.name = name
+        self.pokeResource = pokemonResource
+        
+    }
+    
+}
+
+struct Pokedex {
+    let count: Int!
+    let previous: URL!
+    let results: [Results]!
+    let next: URL!
+    
+    init(count: Int, previous: URL, next: URL, results: [Results]) {
+        self.count = count
+        self.previous = previous
+        self.next = next
+        self.results = results
+    }
+}
+
+//extension Pokedex: Decodable {
+//    // Declaring our keys
+//    enum Keys: String, CodingKey {
+//        case count
+//        case results
+//        case hp
+//    }
+//    
+//    init(from decoder: Decoder) throws {
+//        // define our keyed container
+//        let container = try decoder.container(keyedBy: Keys.self)
+//        
+//        let name: String = try container.decode(String.self, forKey: .name) // extracting the data
+//        let pokedexId: Int = try container.decode(Int.self, forKey: .pokedexId)
+//        let hp: Int = try container.decode(Int.self, forKey: .hp)
+//        
+//        self.init(title: name, pokedexId: pokedexId, hp: hp)
+//    }
+//}
 
 extension PokeStruct: Decodable {
     

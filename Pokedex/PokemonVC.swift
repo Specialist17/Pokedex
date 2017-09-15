@@ -14,8 +14,11 @@ class PokemonVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
     @IBOutlet weak var pokeCollection: UICollectionView!
     @IBOutlet weak var sliderBar: UISlider!
     
+//    var pokemon: PokeStruct
     var pokemonArr = [Pokemon]()
     var filteredPokemon = [Pokemon]()
+    var pokeStructArr = [PokeStruct]()
+    var filteredPokeStruct = [PokeStruct]()
     var musicPlayer: AVAudioPlayer!
     var inSearchMode = false
     
@@ -28,6 +31,12 @@ class PokemonVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
         pokeSearchBar.delegate = self
         
         pokeSearchBar.returnKeyType = UIReturnKeyType.done
+        
+        PokemonService.getPokemon { (poke) in
+            
+            guard let pokemon = poke else {return}
+            
+        }
         
         parsePokemonCSV()
         initAudio()

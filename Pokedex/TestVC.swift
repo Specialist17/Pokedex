@@ -13,22 +13,6 @@ class TestVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let session = URLSession.shared
-        let baseURL = URL(string: "http://pokeapi.co/api/v1/pokemon/1/")!
-        
-        let request = URLRequest(url: baseURL)
-        
-        session.dataTask(with: request) { (data, resp, err) in
-            //    print(data.result.value)
-            if let data = data {
-                
-                guard let pokemon = try? JSONDecoder().decode(PokeStruct.self, from: data)
-                    else {return}
-                
-                print(pokemon.name)
-            }
-        }.resume()
-
     }
 
     override func didReceiveMemoryWarning() {
