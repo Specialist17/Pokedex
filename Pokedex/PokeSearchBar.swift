@@ -54,7 +54,7 @@ class PokeSearchBar: UISearchBar {
             searchField.backgroundColor = barTintColor
             
             //Set searchbar placeholder color
-            searchField.attributedPlaceholder = NSAttributedString(string:"Search Pokemon", attributes: [NSForegroundColorAttributeName: UIColor.gray])
+            searchField.attributedPlaceholder = NSAttributedString(string:"Search Pokemon", attributes: [NSAttributedStringKey.foregroundColor: UIColor.gray])
             
             //search search icon color change
             let glassIconView =  searchField.leftView as! UIImageView

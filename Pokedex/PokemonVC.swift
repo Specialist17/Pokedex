@@ -35,7 +35,7 @@ class PokemonVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
         PokemonService.getPokemon { (poke) in
             
             guard let pokemon = poke else {return}
-            
+            print(pokemon)
         }
         
         parsePokemonCSV()
